@@ -1,0 +1,239 @@
+
+#include<stdio.h>
+#include<string.h>
+void decimaltobinary(int n)
+{
+int rem,i,j,a[50];
+printf("\n\n\nBinary value Of %d is : 1",n);
+for(i=1;n!=1;++i)
+{
+rem=n%2; //remainder value
+a[i]=rem; //assigning of remainder in array
+n=n/2; //dividing the next number by 2 until the value does'nt become 1.
+}
+for(j=i-1;j>0;--j) //printing values from MSB to LSB decrement operator is used
+printf("%d",a[j]);
+}
+void decimaltooctal(int n)
+{
+int i,count,oct[32];
+printf("\n\n\nOctal Value Is : ");
+count=0;
+while(n>0) //will execute until the n becomes 0
+{
+oct[count]=n%8; //remainder value
+n=n/8; //Dividing by 8
+count++;
+}
+for(i=(count-1); i>=0;i--)//assigns value in the array and converted value is printed
+printf("%d",oct[i]);
+}
+void decimaltohexadecimal(int n)
+{
+printf("\n\n\nHexaDecimal Value Of %d Is : ",n);
+char hex[100];
+int i=0,j;
+while(n!=0)
+{ int temp = 0;
+temp = n % 16;
+if(temp < 10)
+{
+hex[i] = temp + 48;//typecasting using asccii values
+i++;
+}
+else
+{
+hex[i] = temp + 55;
+i++;
+}
+n= n/16;
+}
+for( j=i-1; j>=0; j--)
+printf("%c",hex[j]);
+}
+void binarytodecimal(int n)
+{
+int binaryval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;//the conversion formula
+n=n/10;
+base=base*2;//to increase base
+}
+printf("\n\n\nDecimal value of %d Is : %d",binaryval,decimalval);
+}
+void binarytooctal(int n)
+{
+int binaryval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;
+n=n/10;
+base=base*2;
+}
+decimaltooctal(decimalval);
+
+}
+void binarytohexadecimal(int n)
+{
+int binaryval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;
+n=n/10;
+base=base*2;
+}
+decimaltohexadecimal(decimalval);
+}
+void octaltodecimal(int n)
+{
+int octalval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;
+n=n/10;
+base=base*8;
+}
+printf("\n\n\nDecimal value of %d Is : %d",octalval,decimalval);
+}
+void octaltobinary(int n)
+{
+int octalval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;
+n=n/10;
+base=base*8;
+}
+decimaltobinary(decimalval);
+
+}
+void octaltohexadecimal(int n)
+{
+int octalval=n,decimalval=0,base=1,rem;
+while(n>0)
+{
+rem=n%10;
+decimalval=decimalval+rem*base;
+n=n/10;
+base=base*8;
+}
+decimaltohexadecimal(decimalval);
+}
+void hexadecimaltodecimal(char hex[])
+{
+int len=strlen(hex);
+int base=1;
+int i,decimalval=0;
+for( i=len-1;i>=0;i--)
+{
+if(hex[i]>='0'&&hex[i]<='9')
+{
+decimalval=decimalval+(hex[i]-48)*base;
+base=base*16;
+}
+else if(hex[i]>='A'&&hex[i]<='F')
+{
+decimalval=decimalval+(hex[i]-55)*base;
+base=base*16;
+}
+}
+printf("\n\n\nDecimal Value Of %s is : %d",hex,decimalval);
+}
+void hexadecimaltobinary(char hex[])
+{
+int len=strlen(hex);
+int base=1;
+int i,decimalval=0;
+for( i=len-1;i>=0;i--)
+{
+if(hex[i]>='0'&&hex[i]<='9')
+{
+decimalval=decimalval+(hex[i]-48)*base;
+base=base*16;
+}
+else if(hex[i]>='A'&&hex[i]<='F')
+{
+decimalval=decimalval+(hex[i]-55)*base;
+base=base*16;
+}
+}
+decimaltobinary(decimalval);
+}
+void hexadecimaltooctal(char hex[])
+{
+int len=strlen(hex);
+int base=1;
+int i,decimalval=0;
+for( i=len-1;i>=0;i--)
+{
+if(hex[i]>='0'&&hex[i]<='9')
+{
+decimalval=decimalval+(hex[i]-48)*base;
+base=base*16;
+}
+else if(hex[i]>='A'&&hex[i]<='F')
+{
+decimalval=decimalval+(hex[i]-55)*base;
+base=base*16;
+}
+}
+decimaltooctal(decimalval);
+}
+int main()
+{
+int n,ch;
+char he[20];
+printf(" *************************************************************************");
+printf("\n\t\t\t\tNumber Conversion System ");
+printf("\n *************************************************************************");
+printf("\n1.Decimal ");
+printf("\n2.Binary ");
+printf("\n3.Octal ");
+printf("\n4.HexaDecimal ");
+printf("\n\n The number you will enter will be in the form of : ");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1 : printf("\n\n\n\tEnter The Decimal value : ");
+scanf("%d",&n);
+decimaltobinary(n);
+decimaltooctal(n);
+decimaltohexadecimal(n);
+printf("\n\n\n\n");
+break;
+case 2 : printf("\n\n\nEnter The Binary value : ");
+scanf("%d",&n);
+binarytodecimal(n);
+binarytooctal(n);
+binarytohexadecimal(n);
+printf("\n\n\n\n");
+break;
+case 3 : printf("\n\n\n\Enter The Octal value : ");
+scanf("%d",&n);
+octaltodecimal(n);
+octaltobinary(n);
+octaltohexadecimal(n);
+printf("\n\n\n\n");
+break;
+case 4 : printf("\n\n\nEnter the Hexadecimal value : ");
+scanf("%s",he);
+hexadecimaltodecimal(he);
+hexadecimaltobinary(he);
+hexadecimaltooctal(he);
+printf("\n\n\n\n");
+break;
+
+default : printf("Enter Valid Choice !!!");
+printf("\n\n\n\n");
+break;
+}
+return 0;
+}
+
+ 
