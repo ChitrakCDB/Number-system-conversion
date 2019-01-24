@@ -37,4 +37,4 @@ in next functions the conversion will be done by either dividing if it is to be 
 and multiplication if the conversion is foor decimal
 
 
-
+the switch case will work according to input in main function and the remaining three values will be displayed
